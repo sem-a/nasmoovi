@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id       String   @id @default(uuid())
+  name     String
+  email    String
+  password String
+  admin    Boolean  @default(false)
+  created  DateTime @default(now())
+}
+
+model Wedding {
+  id        String      @id @default(uuid())
+  name      String
+  portfolio Portfolio[]
+}
+
+model Portfolio {
+  id        String  @id @default(uuid())
+  image     String
+  width     Int
+  height    Int
+  preview   Boolean
+  weeding   Wedding @relation(fields: [weedingId], references: [id])
+  weedingId String
+}
+
+model Video { 
+  id String @id @default(uuid())
+  name String 
+  video String
+}
