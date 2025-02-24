@@ -1,0 +1,36 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100vw;
+  padding: 21px;
+}
+
+ul.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+h2.logo {
+  font-size: 36px;
+  font-family: "Novelist";
+  text-decoration: none;
+  font-weight: 400;
+}
+
+li.item {
+  font-size: 16px;
+  color: #e0d7c5;
+  font-family: "Cormorant Garamond", sans-serif;
+  font-weight: 600;
+}
+
+.line {
+  width: 50%;
+  height: 1px;
+  background: #e0d7c5;
+  margin: 0 auto;
+}

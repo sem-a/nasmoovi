@@ -5,6 +5,7 @@ const { prisma } = require("../prisma/prisma-client");
  * @desc Получить портфолио
  * @access Public
  */
+
 const all = async (req, res) => {
   try {
     const portfolio = await prisma.portfolio.findMany();
@@ -17,7 +18,7 @@ const all = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Возникла неизвестная ошибка на сервере!",
-      err: err.message
+      err: err.message,
     });
   }
 };
@@ -67,6 +68,29 @@ const getPreview = async (req, res) => {
         preview: true,
       },
     });
+
+    return res.status(200).json({
+      success: true,
+      message: "Данные успешно получены!",
+      portfolio,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Возникла неизвестная ошибка на сервере!",
+    });
+  }
+};
+
+/**
+ * @route GET /api/portfolio/random
+ * @desc Получить случайные 30 фото
+ * @access Public
+ */
+
+const getRandom = async (req, res) => {
+  try {
+    const portfolio = await prisma.portfolio.findMany();
 
     return res.status(200).json({
       success: true,
@@ -212,4 +236,5 @@ module.exports = {
   add,
   delForId,
   updatePreview,
+  getRandom,
 };
