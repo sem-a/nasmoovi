@@ -62,7 +62,7 @@ const one = async (req, res) => {
 /**
  * @route POST /api/wedding/add
  * @desc Добавить свадьбу
- * @access Public
+ * @access Protected
  */
 
 const add = async (req, res) => {
@@ -111,7 +111,7 @@ const add = async (req, res) => {
 /**
  * @route POST /api/wedding/edit/:id
  * @desc Добавить свадьбу
- * @access Public
+ * @access Protected
  */
 
 const edit = async (req, res) => {
@@ -158,13 +158,19 @@ const edit = async (req, res) => {
 /**
  * @route POST /api/wedding/del/:id
  * @desc Удалить свадьбу
- * @access Public
+ * @access Protected
  */
 
 const del = async (req, res) => {
   const id = req.params.id;
 
   try {
+    await prisma.portfolio.deleteMany({
+      where: {
+        weddingId: id,
+      },
+    });
+
     await prisma.wedding.delete({
       where: {
         id,

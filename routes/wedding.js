@@ -1,6 +1,7 @@
 const express = require("express");
 const { all, one, add, edit, del } = require("../controllers/wedding");
 const { auth } = require("../middleware/auth");
+const { deletePhotoForWedding } = require("../middleware/delete");
 const router = express.Router();
 
 // api/wedding/
@@ -16,6 +17,6 @@ router.post("/add", auth, add);
 router.put("/edit/:id", auth, edit);
 
 // api/wedding/del/:id
-router.put("/del/:id", auth, del);
+router.delete("/del/:id", auth, deletePhotoForWedding, del);
 
 module.exports = router;

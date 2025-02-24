@@ -16,5 +16,6 @@ app.use(cors());
 app.use("/api", require("./routes/index"));
 app.use("/api/user", require("./routes/user"));
 app.use("/api/wedding", require("./routes/wedding"));
+app.use("/api/portfolio", require("./routes/portfolio"));
 
 module.exports = app;
