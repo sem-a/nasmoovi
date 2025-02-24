@@ -17,6 +17,7 @@ const all = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Возникла неизвестная ошибка на сервере!",
+      err: err.message
     });
   }
 };
@@ -160,9 +161,49 @@ const delForId = async (req, res) => {
  * @access Protected
  */
 
-const updatePreview = (req, res) => {
-  
-}
+const updatePreview = async (req, res) => {
+  const weddingId = req.params.wedding;
+  const { selectedId } = req.body;
+
+  if (selectedId.length !== 3) {
+    return res.status(400).json({
+      success: false,
+      message: "Изображений должно быть ровно три!",
+    });
+  }
+
+  try {
+    await prisma.portfolio.updateMany({
+      where: {
+        weddingId,
+      },
+      data: {
+        preview: false,
+      },
+    });
+
+    const preview = await prisma.portfolio.updateMany({
+      where: {
+        id: { in: selectedId },
+      },
+      data: {
+        preview: true,
+      },
+    });
+
+    return res.status(204).json({
+      success: true,
+      message: "Превью добавлено!",
+      preview,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Возникла неизвестная ошибка на сервере!",
+      err: err.message,
+    });
+  }
+};
 
 module.exports = {
   all,

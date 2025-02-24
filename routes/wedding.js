@@ -4,19 +4,19 @@ const { auth } = require("../middleware/auth");
 const { deletePhotoForWedding } = require("../middleware/delete");
 const router = express.Router();
 
-// api/wedding/
+// api/weddings/
 router.get("/", all);
 
-// api/wedding/:id
+// api/weddings/:id
 router.get("/:id", one);
 
-// api/wedding/add
+// api/weddings/add
 router.post("/add", auth, add);
 
-// api/wedding/edit/:id
+// api/weddings/edit/:id
 router.put("/edit/:id", auth, edit);
 
-// api/wedding/del/:id
+// api/weddings/del/:id
 router.delete("/del/:id", auth, deletePhotoForWedding, del);
 
 module.exports = router;

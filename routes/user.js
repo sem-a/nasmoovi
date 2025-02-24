@@ -3,13 +3,13 @@ const { login, reg, current } = require("../controllers/user");
 const { auth } = require("../middleware/auth");
 const router = express.Router();
 
-// api/user/login
+// api/users/login
 router.post("/login", login);
 
-// api/user/register
+// api/users/register
 router.post("/reg", reg);
 
-// api/user/current
+// api/users/current
 router.get("/current", auth, current);
 
 module.exports = router;
