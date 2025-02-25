@@ -4,7 +4,7 @@ header {
   left: 0;
   z-index: 10;
   width: 100vw;
-  padding: 21px;
+  padding: 14px;
 }
 
 ul.menu {
@@ -19,11 +19,11 @@ h2.logo {
   font-family: "Novelist";
   text-decoration: none;
   font-weight: 400;
+  line-height: 36px;
 }
 
 li.item {
   font-size: 16px;
-  color: #e0d7c5;
   font-family: "Cormorant Garamond", sans-serif;
   font-weight: 600;
 }
@@ -33,4 +33,25 @@ li.item {
   height: 1px;
   background: #e0d7c5;
   margin: 0 auto;
+}
+
+.transparent {
+  background-color: transparent;
+  transition: all 0.5s ease 0s;
+  color: #e0d7c5;
+}
+
+.transparent a{
+  color: #e0d7c5;
+  transition: all 0.5s ease 0s;
+}
+.scrolled {
+  background-color: #f6f6f4; /* Замените на нужный цвет */
+  transition: all 0.5s ease 0s;
+  color: #776f60;
+}
+
+.scrolled a {
+  color: #776f60;
+  transition: all 0.5s ease 0s;
 }

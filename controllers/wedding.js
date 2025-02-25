@@ -156,7 +156,7 @@ const edit = async (req, res) => {
 };
 
 /**
- * @route POST /api/wedding/del/:id
+ * @route DELETE /api/wedding/del/:id
  * @desc Удалить свадьбу
  * @access Protected
  */

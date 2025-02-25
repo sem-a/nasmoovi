@@ -1,7 +1,21 @@
+import { useEffect } from "react";
+import { useGetAllPortfolioQuery } from "../../app/services/portfolio";
 import { Layout } from "../../components/layout";
+import Loading from "../../components/loading";
 import styles from "./index.module.css";
+import { Container } from "../../components/container";
 
 const Home: React.FC = () => {
+  const { data: portfolio, isLoading, isError } = useGetAllPortfolioQuery();
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (isError || portfolio?.success === false) {
+    return <div>Ошибка</div>;
+  }
+
   return (
     <Layout>
       <div className={styles.welcome}>
@@ -16,9 +30,24 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className={styles.body}>
-        
-      </div>
+      <Container>
+        <div className={styles.body}>
+          {Array.from({ length: 3 }).map((_, colIndex) => (
+            <div key={colIndex} className={styles.col}>
+              {portfolio?.portfolio
+                ?.slice(colIndex * 10, (colIndex + 1) * 10)
+                .map((item, index) => (
+                  <img
+                    key={index}
+                    src={item.image}
+                    alt={`Photo ${index + 1 + colIndex * 10}`}
+                    className={styles.photo}
+                  />
+                ))}
+            </div>
+          ))}
+        </div>
+      </Container>
     </Layout>
   );
 };

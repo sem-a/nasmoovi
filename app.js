@@ -15,7 +15,7 @@ app.use(cors());
 
 app.use("/api", require("./routes/index"));
 app.use("/api/users", require("./routes/user"));
-app.use("/api/weddings", require("./routes/wedding"));
+app.use("/api/wedding", require("./routes/wedding"));
 app.use("/api/portfolio", require("./routes/portfolio"));
 app.use("/api/video", require("./routes/video"));
 

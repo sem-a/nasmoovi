@@ -7,7 +7,6 @@ const {
   getPreview,
   delForId,
   updatePreview,
-  getRandom,
 } = require("../controllers/portfolio");
 const { auth } = require("../middleware/auth");
 const { deletePhoto } = require("../middleware/delete");
@@ -21,9 +20,6 @@ router.get("/:wedding", getForWeddingId);
 
 // api/portfolio/preview/:wedding
 router.get("/preview/:wedding", getPreview);
-
-// api/portfolio/random
-router.get("/random", getRandom);
 
 // api/portfolio/add/:wedding
 router.post("/add/:wedding", auth, uploadPhoto.array("file", 100), add);

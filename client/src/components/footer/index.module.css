@@ -1,0 +1,13 @@
+footer {
+  padding: 14px 0;
+  width: 100vw;
+}
+
+.body {
+  text-align: center;
+}
+
+.body a {
+  color: #776f60;
+  text-decoration: underline;
+}

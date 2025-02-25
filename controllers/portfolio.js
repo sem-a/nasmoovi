@@ -9,10 +9,21 @@ const { prisma } = require("../prisma/prisma-client");
 const all = async (req, res) => {
   try {
     const portfolio = await prisma.portfolio.findMany();
+
+    if (portfolio.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Нет фотографий в портфолио!",
+      });
+    }
+
+    const shuffledPortfolio = portfolio.sort(() => 0.5 - Math.random());
+    const randomPhotos = shuffledPortfolio.slice(0, 30);
+
     return res.status(200).json({
       success: true,
       message: "Данные успешно получены!",
-      portfolio,
+      portfolio: randomPhotos,
     });
   } catch (err) {
     return res.status(500).json({
@@ -68,29 +79,6 @@ const getPreview = async (req, res) => {
         preview: true,
       },
     });
-
-    return res.status(200).json({
-      success: true,
-      message: "Данные успешно получены!",
-      portfolio,
-    });
-  } catch (err) {
-    return res.status(500).json({
-      success: false,
-      message: "Возникла неизвестная ошибка на сервере!",
-    });
-  }
-};
-
-/**
- * @route GET /api/portfolio/random
- * @desc Получить случайные 30 фото
- * @access Public
- */
-
-const getRandom = async (req, res) => {
-  try {
-    const portfolio = await prisma.portfolio.findMany();
 
     return res.status(200).json({
       success: true,
@@ -236,5 +224,4 @@ module.exports = {
   add,
   delForId,
   updatePreview,
-  getRandom,
 };

@@ -4,11 +4,28 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { PATHS } from "./paths";
 import Home from "./pages/home";
 import "./index.css";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
+import Contact from "./pages/contact";
+import Video from "./pages/video";
+import Weddings from "./pages/weddings";
 
 const router = createBrowserRouter([
   {
     path: PATHS.home,
     element: <Home />,
+  },
+  {
+    path: PATHS.contact,
+    element: <Contact />,
+  },
+  {
+    path: PATHS.video,
+    element: <Video />,
+  },
+  {
+    path: PATHS.weddings,
+    element: <Weddings />,
   },
 ]);
 
@@ -17,6 +34,8 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
       <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

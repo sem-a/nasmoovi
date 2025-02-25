@@ -65,3 +65,23 @@ h2.subtitle {
   -webkit-font-smoothing: antialiased;
 }
 
+.body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 14px 0;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.photo {
+  width: 100%;
+  max-height: 80vh;
+  height: auto;
+  object-fit: cover;
+}
