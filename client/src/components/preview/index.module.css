@@ -1,0 +1,53 @@
+.weddingPreview {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.imagesContainer {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+}
+.line {
+  margin-top: 7px;
+  width: 50%;
+  height: 1px;
+  background-color: #776f60;
+}
+.previewImage {
+  width: 269px;
+  height: 75vh;
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 7px;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 940px) {
+  .previewImage {
+    width: 200px;
+    height: 60vh;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .previewImage {
+    width: 150px;
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .previewImage {
+    width: 150px;
+    height: 40vh;
+  }
+  .weddingPreview {
+    align-items: center;
+  }
+  .line {
+    width: 90%;
+  }
+}

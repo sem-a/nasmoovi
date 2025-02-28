@@ -1,4 +1,6 @@
 const { prisma } = require("../prisma/prisma-client");
+const s3 = require("../cloud/aws-config");
+const s3ImageSize = require("s3-image-size");
 
 /**
  * @route GET /api/portfolio/
@@ -132,6 +134,7 @@ const add = async (req, res) => {
       portfolio: portfolioEntries,
     });
   } catch (err) {
+    console.log(err);
     return res.status(500).json({
       success: false,
       message: "Возникла неизвестная ошибка на сервере!",

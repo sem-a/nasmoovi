@@ -6,7 +6,7 @@ import { RootState } from "../../app/store";
 export interface WeddingData {
   success: boolean;
   message: string;
-  wedding: Wedding[] | Wedding | null ;
+  wedding: Wedding[] | null ;
 }
 
 interface InitialState {

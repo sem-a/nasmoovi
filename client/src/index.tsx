@@ -9,6 +9,8 @@ import { store } from "./app/store";
 import Contact from "./pages/contact";
 import Video from "./pages/video";
 import Weddings from "./pages/weddings";
+import Err404 from "./pages/404";
+import PortfolioPage from "./pages/portfolio";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
   {
     path: PATHS.weddings,
     element: <Weddings />,
+  },
+  {
+    path: `${PATHS.weddingOne}/:id`,
+    element: <PortfolioPage />,
+  },
+  {
+    path: "*",
+    element: <Err404 />,
   },
 ]);
 

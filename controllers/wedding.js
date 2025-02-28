@@ -8,11 +8,11 @@ const { prisma } = require("../prisma/prisma-client");
 
 const all = async (req, res) => {
   try {
-    const weddings = await prisma.wedding.findMany();
+    const wedding = await prisma.wedding.findMany();
     return res.status(200).json({
       success: true,
       message: "Свадьбы успешно получены!",
-      weddings,
+      wedding,
     });
   } catch (err) {
     return res.status(500).json({

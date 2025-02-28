@@ -7,6 +7,12 @@ interface AddPortfolioArgs {
   formData: FormData;
 }
 
+interface ResponsePortfolio {
+  success: boolean;
+  message: string;
+  portfolio: Portfolio;
+}
+
 export const portfolioApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllPortfolio: builder.query<PortfolioData, void>({
@@ -15,19 +21,19 @@ export const portfolioApi = api.injectEndpoints({
         method: "GET",
       }),
     }),
-    getForIdPortfolio: builder.query<Portfolio[], string>({
+    getForIdPortfolio: builder.query<PortfolioData, string>({
       query: (wedding) => ({
         url: `/portfolio/${wedding}`,
         method: "GET",
       }),
     }),
-    getWeddingPreview: builder.query<Portfolio[], string>({
+    getWeddingPreview: builder.query<PortfolioData, string>({
       query: (wedding) => ({
         url: `/portfolio/preview/${wedding}`,
         method: "GET",
       }),
     }),
-    addPortfolio: builder.mutation<Portfolio, AddPortfolioArgs>({
+    addPortfolio: builder.mutation<ResponsePortfolio, AddPortfolioArgs>({
       query: ({ wedding, formData }) => ({
         url: `/portfolio/add/${wedding}`,
         method: "POST",

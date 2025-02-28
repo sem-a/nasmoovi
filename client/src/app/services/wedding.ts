@@ -2,10 +2,6 @@ import { Wedding } from "@prisma/client";
 import { api } from "./api";
 import { WeddingData } from "../../features/wedding/weddingSlice";
 
-type getInfoWeddingProps = {
-  name: string;
-};
-
 const base_url = "/wedding/";
 
 export const weddingApi = api.injectEndpoints({
@@ -16,7 +12,14 @@ export const weddingApi = api.injectEndpoints({
         method: "GET",
       }),
     }),
-    getWedding: builder.query<WeddingData, string>({
+    getWedding: builder.query<
+      {
+        success: boolean;
+        message: string;
+        wedding: Wedding | null;
+      },
+      string
+    >({
       query: (id) => ({
         url: `${base_url}${id}`,
         method: "GET",

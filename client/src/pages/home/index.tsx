@@ -1,9 +1,10 @@
-import { useEffect } from "react";
 import { useGetAllPortfolioQuery } from "../../app/services/portfolio";
 import { Layout } from "../../components/layout";
 import Loading from "../../components/loading";
 import styles from "./index.module.css";
 import { Container } from "../../components/container";
+import NoData from "../../components/nodata";
+import PhotoGallery from "../../components/gallery";
 
 const Home: React.FC = () => {
   const { data: portfolio, isLoading, isError } = useGetAllPortfolioQuery();
@@ -14,6 +15,10 @@ const Home: React.FC = () => {
 
   if (isError || portfolio?.success === false) {
     return <div>Ошибка</div>;
+  }
+
+  if (!portfolio || portfolio.portfolio === null) {
+    return <NoData />;
   }
 
   return (
@@ -31,22 +36,23 @@ const Home: React.FC = () => {
         </div>
       </div>
       <Container>
-        <div className={styles.body}>
+        <PhotoGallery portfolio={portfolio.portfolio} />
+        {/* <div className={styles.body}>
           {Array.from({ length: 3 }).map((_, colIndex) => (
             <div key={colIndex} className={styles.col}>
               {portfolio?.portfolio
-                ?.slice(colIndex * 10, (colIndex + 1) * 10)
+                ?.filter((_, index) => index % 3 === colIndex)
                 .map((item, index) => (
                   <img
                     key={index}
                     src={item.image}
-                    alt={`Photo ${index + 1 + colIndex * 10}`}
+                    alt={`Photo ${index + 1 + colIndex}`}
                     className={styles.photo}
                   />
                 ))}
             </div>
           ))}
-        </div>
+        </div> */}
       </Container>
     </Layout>
   );
