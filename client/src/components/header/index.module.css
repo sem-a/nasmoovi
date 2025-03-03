@@ -27,6 +27,9 @@ li.item {
   font-family: "Cormorant Garamond", sans-serif;
   font-weight: 600;
 }
+li.burger {
+  display: none;
+}
 
 .line {
   width: 50%;
@@ -46,7 +49,7 @@ li.item {
   transition: all 0.5s ease 0s;
 }
 .scrolled {
-  background-color: #f6f6f4; /* Замените на нужный цвет */
+  background-color: #f6f6f4;
   transition: all 0.5s ease 0s;
   color: #776f60;
 }
@@ -54,4 +57,8 @@ li.item {
 .scrolled a {
   color: #776f60;
   transition: all 0.5s ease 0s;
+}
+
+@media screen {
+  
 }

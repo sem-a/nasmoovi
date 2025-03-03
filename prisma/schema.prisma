@@ -35,6 +35,5 @@ model Portfolio {
 
 model Video {
   id    String @id @default(uuid())
-  name  String
   video String
 }

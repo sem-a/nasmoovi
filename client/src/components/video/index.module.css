@@ -12,7 +12,7 @@
   gap: 14px;
 }
 
-.photo {
+.video {
   width: 100%;
   max-height: 80vh;
   height: auto;
@@ -33,7 +33,7 @@
   z-index: 1000;
 }
 
-.modalImage {
+.modalVideo {
   max-height: 80%;
   max-width: 100%;
 }

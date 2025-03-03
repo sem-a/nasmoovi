@@ -31,10 +31,9 @@ const getAll = async (req, res) => {
  */
 
 const add = async (req, res) => {
-  const { name } = req.body;
   const filePath = req.file.location;
 
-  if (!filePath || !name) {
+  if (!filePath) {
     return res.status(400).json({
       success: false,
       message: "Проверьте тело запроса!",
@@ -45,7 +44,6 @@ const add = async (req, res) => {
     const video = await prisma.video.create({
       data: {
         video: filePath,
-        name,
       },
     });
 

@@ -52,6 +52,7 @@ export const Header = () => {
           <li className={styles.item}>
             <Link to={PATHS.contact}>КОНТАКТЫ</Link>
           </li>
+          <li className={styles.burger}></li>
         </ul>
         <div className={styles.line}></div>
       </Container>

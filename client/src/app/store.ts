@@ -4,6 +4,7 @@ import { listenerMiddleware } from "../middleware/auth";
 import auth from "../features/auth/authSlice";
 import portfolio from "../features/portfolio/portfolioSlice";
 import weddings from "../features/wedding/weddingSlice";
+import video from "../features/video/videoSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     auth,
     portfolio,
     weddings,
+    video,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

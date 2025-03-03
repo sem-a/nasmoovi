@@ -37,22 +37,6 @@ const Home: React.FC = () => {
       </div>
       <Container>
         <PhotoGallery portfolio={portfolio.portfolio} />
-        {/* <div className={styles.body}>
-          {Array.from({ length: 3 }).map((_, colIndex) => (
-            <div key={colIndex} className={styles.col}>
-              {portfolio?.portfolio
-                ?.filter((_, index) => index % 3 === colIndex)
-                .map((item, index) => (
-                  <img
-                    key={index}
-                    src={item.image}
-                    alt={`Photo ${index + 1 + colIndex}`}
-                    className={styles.photo}
-                  />
-                ))}
-            </div>
-          ))}
-        </div> */}
       </Container>
     </Layout>
   );
