@@ -2,6 +2,12 @@ import { Wedding } from "@prisma/client";
 import { api } from "./api";
 import { WeddingData } from "../../features/wedding/weddingSlice";
 
+export interface WeddingAdd {
+  success: boolean;
+  message: string;
+  wedding: Wedding | null ;
+}
+
 const base_url = "/wedding/";
 
 export const weddingApi = api.injectEndpoints({
@@ -25,14 +31,14 @@ export const weddingApi = api.injectEndpoints({
         method: "GET",
       }),
     }),
-    addWedding: builder.mutation<WeddingData, { name: string }>({
+    addWedding: builder.mutation<WeddingAdd, { name: string }>({
       query: ({ name }) => ({
         url: `${base_url}add`,
         method: "POST",
         body: { name },
       }),
     }),
-    editWedding: builder.mutation<WeddingData, { id: string; name: string }>({
+    editWedding: builder.mutation<WeddingAdd, { id: string; name: string }>({
       query: ({ id, name }) => ({
         url: `${base_url}edit/${id}`,
         method: "PUT",

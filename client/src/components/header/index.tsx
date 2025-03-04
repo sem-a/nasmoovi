@@ -4,8 +4,32 @@ import { Container } from "../container";
 import styles from "./index.module.css";
 import { PATHS } from "../../paths";
 
+const menu = [
+  {
+    name: "ГЛАВНАЯ",
+    path: PATHS.home,
+  },
+  {
+    name: "СВАДЕБНЫЕ КАДРЫ",
+    path: PATHS.weddings,
+  },
+  {
+    name: "NASMOOVI",
+    path: "",
+  },
+  {
+    name: "СВАДЕБНЫЕ ВИДЕО",
+    path: PATHS.video,
+  },
+  {
+    name: "КОНТАКТЫ",
+    path: PATHS.contact,
+  },
+];
+
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const handleScroll = () => {
@@ -26,6 +50,10 @@ export const Header = () => {
     };
   }, [location.pathname]);
 
+  const toggleMenu = (isMenuOpen: boolean) => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   const headerClass =
     location.pathname === "/"
       ? isScrolled
@@ -36,23 +64,26 @@ export const Header = () => {
   return (
     <header className={headerClass}>
       <Container>
-        <ul className={styles.menu}>
-          <li className={styles.item}>
-            <Link to={PATHS.home}>ГЛАВНАЯ</Link>
+        <ul className={`${styles.menu} ${isMenuOpen ? styles.open : ""}`}>
+          {menu.map((item) => {
+            return item.name !== "NASMOOVI" || !isMenuOpen ? (
+              <li className={styles.item} key={item.path}>
+                {item.name === "NASMOOVI" ? (
+                  <h2 className={styles.logo}>{item.name}</h2>
+                ) : (
+                  <Link to={item.path}>{item.name}</Link>
+                )}
+              </li>
+            ) : null;
+          })}
+          <li
+            className={styles.burger}
+            onClick={() => {
+              toggleMenu(isMenuOpen);
+            }}
+          >
+            <div className={styles.burgerLine}></div>
           </li>
-          <li className={styles.item}>
-            <Link to={PATHS.weddings}>СВАДЕБНЫЕ КАДРЫ</Link>
-          </li>
-          <li className={styles.item}>
-            <h2 className={styles.logo}>NASMOOVI</h2>
-          </li>
-          <li className={styles.item}>
-            <Link to={PATHS.video}>СВАДЕБНЫЕ ВИДЕО</Link>
-          </li>
-          <li className={styles.item}>
-            <Link to={PATHS.contact}>КОНТАКТЫ</Link>
-          </li>
-          <li className={styles.burger}></li>
         </ul>
         <div className={styles.line}></div>
       </Container>

@@ -27,6 +27,7 @@ li.item {
   font-family: "Cormorant Garamond", sans-serif;
   font-weight: 600;
 }
+
 li.burger {
   display: none;
 }
@@ -44,7 +45,7 @@ li.burger {
   color: #e0d7c5;
 }
 
-.transparent a{
+.transparent a {
   color: #e0d7c5;
   transition: all 0.5s ease 0s;
 }
@@ -59,6 +60,102 @@ li.burger {
   transition: all 0.5s ease 0s;
 }
 
-@media screen {
-  
+@media screen and (max-width: 887px) {
+  header {
+    padding: 21px 0;
+  }
+  .open {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f6f6f4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    transition: all 0.5s ease 0s;
+  }
+  li.item {
+    display: none;
+  }
+
+  ul.menu {
+    justify-content: flex-end;
+  }
+
+  .open li.item{
+    display: block;
+  }
+  .open a {
+    color: #776f60;
+  }
+  ul.menu.open {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .line {
+    display: none;
+  }
+
+  li.burger {
+    display: block;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .burgerLine {
+    width: 25px;
+    height: 1px;
+    background-color: #e0d7c5;
+    transition: all 0.5s ease 0s;
+  }
+  .burgerLine::after,
+  .burgerLine::before {
+    content: "";
+    display: block;
+    width: 25px;
+    height: 1px;
+    background-color: #e0d7c5;
+    transition: all 0.5s ease 0s;
+  }
+  .burgerLine::after {
+    transform: translateY(-7px);
+  }
+  .burgerLine::before {
+    transform: translateY(7px);
+  }
+
+  .open li.burger {
+    position: absolute;
+    right: 21px;
+    top: 21px;
+  }
+  .open .burgerLine {
+    background-color: transparent !important;
+  }
+  .open .burgerLine::after,
+  .open .burgerLine::before {
+    transform: translateY(0);
+    transition: transform 0.3s ease 0s;
+    background-color: #776f60;
+  }
+  .open .burgerLine::after {
+    transform: translateY(-1px) rotate(45deg);
+    transition-delay: 0.25s;
+  }
+  .open .burgerLine::before {
+    transform: rotate(-45deg);
+    transition-delay: 0.25s;
+  }
+
+  .scrolled .burgerLine {
+    background-color: #776f60;
+  }
+  .scrolled .burgerLine::after,
+  .scrolled .burgerLine::before {
+    background-color: #776f60;
+  }
 }
