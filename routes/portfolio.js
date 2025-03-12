@@ -28,6 +28,6 @@ router.post("/add/:wedding", auth, uploadPhoto.array("file", 100), add);
 router.delete("/del/:id", auth, deletePhoto, delForId);
 
 // api/portfolio/preview/update
-router.put("/preview/update", auth, updatePreview);
+router.put("/preview/update/:wedding", auth, updatePreview);
 
 module.exports = router;

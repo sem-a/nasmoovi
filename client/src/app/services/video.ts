@@ -28,7 +28,7 @@ export const videoApi = api.injectEndpoints({
     delVideo: builder.mutation<void, string>({
       query: (id) => ({
         url: `/video/del/${id}`,
-        method: "POST",
+        method: "DELETE",
       }),
     }),
   }),

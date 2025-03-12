@@ -40,20 +40,14 @@ export const portfolioApi = api.injectEndpoints({
         body: formData,
       }),
     }),
-    delPortfolio: builder.mutation<void, string>({
-      query: (id) => ({
-        url: `/portfolio/del/${id}`,
-        method: "DELETE",
-      }),
-    }),
     updatePreviewPortfolio: builder.mutation<
-      Portfolio,
-      { id: string; selectedId: string[] }
+      ResponsePortfolio,
+      { id: string; selectedIds: string[] }
     >({
-      query: ({ id, selectedId }) => ({
-        url: "/portfolio/preview/update",
+      query: ({ id, selectedIds }) => ({
+        url: `/portfolio/preview/update/${id}`,
         method: "PUT",
-        body: { id, selectedId },
+        body: { selectedIds },
       }),
     }),
   }),
@@ -65,5 +59,4 @@ export const {
   useGetForIdPortfolioQuery,
   useUpdatePreviewPortfolioMutation,
   useGetWeddingPreviewQuery,
-  useDelPortfolioMutation,
 } = portfolioApi;

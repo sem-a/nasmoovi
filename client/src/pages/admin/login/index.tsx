@@ -23,7 +23,7 @@ const Login = () => {
   const login = async (data: UserData) => {
     try {
       await loginUser(data).unwrap();
-      navigate(PATHS.weddingAll);
+      navigate(PATHS.adminWeddingAll);
     } catch (err) {
       const maybeError = isErrorWithMessage(err);
       if (maybeError) {

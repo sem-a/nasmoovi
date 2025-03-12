@@ -31,11 +31,10 @@ export const weddingApi = api.injectEndpoints({
         method: "GET",
       }),
     }),
-    addWedding: builder.mutation<WeddingAdd, { name: string }>({
-      query: ({ name }) => ({
+    addWedding: builder.mutation<WeddingAdd, {id: string, name: string}>({
+      query: () => ({
         url: `${base_url}add`,
         method: "POST",
-        body: { name },
       }),
     }),
     editWedding: builder.mutation<WeddingAdd, { id: string; name: string }>({

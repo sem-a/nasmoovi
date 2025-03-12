@@ -5,7 +5,6 @@ import {
   useGetAllWeddingsQuery,
 } from "../../../app/services/wedding";
 import { AdminContainer } from "../../../components/container";
-import { useDelPortfolioMutation } from "../../../app/services/portfolio";
 import { PATHS } from "../../../paths";
 import styles from "./index.module.css";
 import ServerError from "../../../components/error";
@@ -20,17 +19,15 @@ const WeddingAll = () => {
     refetch,
   } = useGetAllWeddingsQuery();
 
-  const [deletePortfolio] = useDelPortfolioMutation();
   const [deleteWedding] = useDelWeddingMutation();
 
   const handleEdit = (id: string) => {
-    navigate(`${PATHS.preview}/${id}`);
+    navigate(`${PATHS.adminPreview}/${id}`);
   };
 
   const handleDelete = async (id: string) => {
     if (window.confirm("Вы действительно хотите удалить?")) {
       try {
-        await deletePortfolio(id).unwrap();
         await deleteWedding(id).unwrap();
         refetch();
       } catch (err) {

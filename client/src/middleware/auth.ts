@@ -5,10 +5,10 @@ export const listenerMiddleware = createListenerMiddleware();
 
 listenerMiddleware.startListening({
   matcher: authApi.endpoints.login.matchFulfilled,
-  effect: async (acion, listenerApi) => {
+  effect: async (action, listenerApi) => {
     listenerApi.cancelActiveListeners();
-    if (acion.payload.token) {
-      localStorage.setItem("token", acion.payload.token);
+    if (action.payload.user) {
+      localStorage.setItem("token", action.payload.user.token);
     }
   },
 });

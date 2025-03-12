@@ -3,7 +3,11 @@ import { api } from "./api";
 
 export type UserData = Omit<Users, "id">;
 
-type ResponseLoginData = Users & { token: string };
+type ResponseLoginData = {
+  success: boolean;
+  message: string;
+  user: Users & { token: string };
+};
 
 export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({

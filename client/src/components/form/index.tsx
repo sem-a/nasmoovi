@@ -135,7 +135,7 @@ export const ImageCheckbox: React.FC<PropsImageCheckBox> = ({
         onChange={handleOnChange}
       />
       <div className={styles.imageContainer}>
-        <img src={`${src}`} alt={alt} className={styles.imageCheckboxImage} />
+        <img src={src} alt={alt} className={styles.imageCheckboxImage} />
       </div>
     </label>
   );

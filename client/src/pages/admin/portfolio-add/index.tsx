@@ -15,7 +15,7 @@ interface AddPortfolioArgs {
   formData: FormData;
 }
 
-const ImageUploadForm: React.FC = () => {
+const PortfolioAdd: React.FC = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [addPortfolio, { isLoading }] = useAddPortfolioMutation();
   const { wedding } = useParams<{ wedding: string }>();
@@ -29,12 +29,11 @@ const ImageUploadForm: React.FC = () => {
     const formData = new FormData();
     fileList.forEach((file) => {
       if (file.originFileObj) {
-        formData.append("photos", file.originFileObj);
+        formData.append("file", file.originFileObj);
       }
     });
 
     try {
-      // Теперь используем AddPortfolioArgs для типизации аргументов мутации
       await addPortfolio({
         wedding,
         formData,
@@ -72,11 +71,11 @@ const ImageUploadForm: React.FC = () => {
       >
         {isLoading ? "Загрузка..." : "Загрузить"}
       </Button>
-      <Link to={PATHS.preview + "/" + wedding}>
+      <Link to={PATHS.adminPreview + "/" + wedding}>
         <CustomButton type="primary">Далее</CustomButton>
       </Link>
     </AdminContainer>
   );
 };
 
-export default ImageUploadForm;
+export default PortfolioAdd;

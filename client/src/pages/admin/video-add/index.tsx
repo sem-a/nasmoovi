@@ -6,7 +6,7 @@ import { useAddVideoMutation } from "../../../app/services/video";
 import { H2 } from "../../../components/title";
 import { AdminContainer } from "../../../components/container";
 
-const VideoUploadForm: React.FC = () => {
+const VideoAdd: React.FC = () => {
     const [fileList, setFileList] = useState<UploadFile[]>([]);
     const [videoName, setVideoName] = useState(""); // Состояние для хранения названия видео
     const [addVideo, { isLoading }] = useAddVideoMutation();
@@ -14,8 +14,7 @@ const VideoUploadForm: React.FC = () => {
     const handleUpload = async () => {
         const formData = new FormData();
         if (fileList.length > 0 && fileList[0].originFileObj) {
-            formData.append("video", fileList[0].originFileObj); // Предполагается, что загружается один файл
-            formData.append("name", videoName); // Добавление названия видео в formData
+            formData.append("file", fileList[0].originFileObj); // Предполагается, что загружается один файл
 
             try {
                 const result = await addVideo(formData).unwrap();
@@ -68,4 +67,4 @@ const VideoUploadForm: React.FC = () => {
     );
 };
 
-export default VideoUploadForm;
+export default VideoAdd;

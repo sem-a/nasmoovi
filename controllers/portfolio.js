@@ -178,9 +178,9 @@ const delForId = async (req, res) => {
 
 const updatePreview = async (req, res) => {
   const weddingId = req.params.wedding;
-  const { selectedId } = req.body;
+  const { selectedIds } = req.body;
 
-  if (selectedId.length !== 3) {
+  if (selectedIds.length !== 3) {
     return res.status(400).json({
       success: false,
       message: "Изображений должно быть ровно три!",
@@ -199,7 +199,7 @@ const updatePreview = async (req, res) => {
 
     const preview = await prisma.portfolio.updateMany({
       where: {
-        id: { in: selectedId },
+        id: { in: selectedIds },
       },
       data: {
         preview: true,

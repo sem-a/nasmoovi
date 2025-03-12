@@ -6,7 +6,7 @@ import { portfolioApi } from "../../app/services/portfolio";
 export interface PortfolioData {
   success: boolean;
   message: string;
-  portfolio: Portfolio[] | null;
+  portfolio: Portfolio[];
 }
 
 interface InitialState {
