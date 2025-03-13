@@ -5,7 +5,7 @@ import { WeddingData } from "../../features/wedding/weddingSlice";
 export interface WeddingAdd {
   success: boolean;
   message: string;
-  wedding: Wedding | null ;
+  wedding: Wedding | null;
 }
 
 const base_url = "/wedding/";
@@ -31,10 +31,13 @@ export const weddingApi = api.injectEndpoints({
         method: "GET",
       }),
     }),
-    addWedding: builder.mutation<WeddingAdd, {id: string, name: string}>({
-      query: () => ({
+    addWedding: builder.mutation<WeddingAdd, { name: string }>({
+      query: ({ name }) => ({
         url: `${base_url}add`,
         method: "POST",
+        body: {
+          name,
+        },
       }),
     }),
     editWedding: builder.mutation<WeddingAdd, { id: string; name: string }>({

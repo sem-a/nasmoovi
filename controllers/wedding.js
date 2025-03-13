@@ -68,6 +68,8 @@ const one = async (req, res) => {
 const add = async (req, res) => {
   const { name } = req.body;
 
+  console.log(name)
+
   if (!name) {
     return res.status(400).json({
       success: false,
@@ -100,10 +102,11 @@ const add = async (req, res) => {
       wedding,
     });
   } catch (err) {
+    console.log(err)
     return res.status(500).json({
       success: false,
       message: "Произошла непредвиденная ошибка на сервере!",
-      err,
+      err: err.message,
     });
   }
 };
