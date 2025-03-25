@@ -14,6 +14,6 @@ export const PATHS = {
     contact: '/contact',
     errorPage: '/500',
     notFoundPage: '/404',
-    URL: 'http://wed.nasmoovi.ru/'
+    URL: 'https://wed.nasmoovi.ru/'
     // URL: 'https://sem-a-nasmoovi-demo-bad7.twc1.net/'
 } as const;
