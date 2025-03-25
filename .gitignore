@@ -1,4 +1,4 @@
 node_modules
-client
+/client
 # Keep environment variables out of version control
 .env
