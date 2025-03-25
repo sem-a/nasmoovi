@@ -2,6 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
+const path = require("path");
 
 require("dotenv").config();
 
@@ -20,8 +21,8 @@ app.use("/api/portfolio", require("./routes/portfolio"));
 app.use("/api/video", require("./routes/video"));
 
 app.use((req, res, next) => {
-  if (req.url === '/index.html' || req.url === '/index.php') {
-    res.redirect(301, '/');
+  if (req.url === "/index.html" || req.url === "/index.php") {
+    res.redirect(301, "/");
   } else {
     next();
   }
