@@ -19,4 +19,17 @@ app.use("/api/wedding", require("./routes/wedding"));
 app.use("/api/portfolio", require("./routes/portfolio"));
 app.use("/api/video", require("./routes/video"));
 
+app.use((req, res, next) => {
+  if (req.url === '/index.html' || req.url === '/index.php') {
+    res.redirect(301, '/');
+  } else {
+    next();
+  }
+});
+
+app.use(express.static(path.join(__dirname, "build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
+});
+
 module.exports = app;
