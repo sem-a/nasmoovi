@@ -116,7 +116,7 @@ const add = async (req, res) => {
     const portfolioEntries = [];
 
     for (const file of files) {
-      const fileUrl = file.location;
+      const fileUrl = file.location.startsWith('https://') ? file.location : `https://${file.location}`;
 
       const newEntry = await prisma.portfolio.create({
         data: {
@@ -125,7 +125,7 @@ const add = async (req, res) => {
           preview: false,
         },
       });
-      portfolioEntries.push(newEntry);
+    portfolioEntries.push(newEntry);
     }
 
     return res.status(200).json({
