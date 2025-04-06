@@ -12,7 +12,7 @@ const Contact = () => {
       <Container>
         <div className={styles.body}>
           <div className={styles.content}>
-            <img src={require("../../img/contact.jpeg")} alt="contact" />
+            <img src={require("../../img/contact.jpeg")} alt="contac" />
             <H4 textAlign="center">Настя Соколова</H4>
             <p className={styles.subtitle}>ваш свадебный фотограф</p>
             <div className={styles.buttons}>
