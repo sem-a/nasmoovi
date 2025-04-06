@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5e596f04.css",
+    "main.js": "/static/js/main.97c805c1.js",
+    "static/media/contact.jpeg": "/static/media/contact.e856202f1933966fb8fe.jpeg",
+    "static/media/video.mp4": "/static/media/video.9e5f3558badd8974c88d.mp4",
+    "static/media/novelist.ttf": "/static/media/novelist.4fbed73b89872f4da974.ttf",
+    "index.html": "/index.html",
+    "main.5e596f04.css.map": "/static/css/main.5e596f04.css.map",
+    "main.97c805c1.js.map": "/static/js/main.97c805c1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5e596f04.css",
+    "static/js/main.97c805c1.js"
+  ]
+}
